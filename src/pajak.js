@@ -1,13 +1,5 @@
-import * as data from "./__mockdata.pajak"
+import * as data from "./__mockdata.pajak.js"
 import { taxCategory, reliefCategory } from "./category.constant.js";
-
-const log = console.log;
-
-// data values
-const person = {
-  salary: -25000000,
-  profile: 'TK0',
-}
 
 const calculateHelper = (annualSalary) => {
   const {levelOne, levelTwo, levelThree, levelFour} = taxCategory;
@@ -44,7 +36,7 @@ const calculateHelper = (annualSalary) => {
   return annualTax;
 }
 
-export const calculateTaxScheme = (person) => {
+const calculateTaxScheme = (person) => {
   if (person.salary <= 0 || !person.salary)
     return {error: 'something is wrong with the person salary'};
 
@@ -54,7 +46,7 @@ export const calculateTaxScheme = (person) => {
   return { taxableIncome, taxIncome };
 }
 
-export const calculateTaxRelief = (person) => {
+const calculateTaxRelief = (person) => {
   const {salary, profile} = person;
   if (!Object.keys(reliefCategory).includes(profile) || salary <= 0)
     return {error: 'something is wrong with the person data'};
@@ -68,10 +60,16 @@ export const calculateTaxRelief = (person) => {
   return {taxableIncome, taxIncome};
 }
 
+export { calculateTaxScheme, calculateTaxRelief };
+
+// to print example
+
+const person = data.person3;
+const log = console.log;
 
 log('salary: ' + person.salary + ' IDR / month');
 log('status: ' + person.profile);
 log('///////////////////////////////////');
-log(`[ Tax Scheme Calculation ] RESULT = ${JSON.stringify(calculateTaxScheme(data.person4))}`);
+log(`[ Tax Scheme Calculation ] RESULT = ${JSON.stringify(calculateTaxScheme(person))}`);
 log('===============================');
-log(`[ Tax Relief Calculation ] RESULT = ${JSON.stringify(calculateTaxRelief(data.person4))}`);
+log(`[ Tax Relief Calculation ] RESULT = ${JSON.stringify(calculateTaxRelief(person))}`);

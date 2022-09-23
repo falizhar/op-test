@@ -35,8 +35,9 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.19.1",
     "@jest/globals": "^29.0.3",
-    "babel-cli": "^6.26.0",
     "babel-jest": "^29.0.3",
     "eslint-config-airbnb-base": "^15.0.0"
   }

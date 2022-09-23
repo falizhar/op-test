@@ -1,7 +1,5 @@
-
-
 import { calculateTaxRelief, calculateTaxScheme } from './pajak.js';
-import * as data from "./__mockdata.pajak"
+import * as data from "./__mockdata.pajak.js"
 
 describe('calculate tax scheme correctly', () => {
 
